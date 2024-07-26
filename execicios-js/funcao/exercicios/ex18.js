@@ -4,7 +4,7 @@ const extenso = (num) => {
       console.log('Zero')
       break
     case 1:
-      console.log('Zero')
+      console.log('Um')
       break
     case 2:
       console.log('Dois')
