@@ -7,7 +7,95 @@
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
-        /* ... */
+        body {
+            background-color: lightgray;
+            font-family: Oswald;
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .cabecalho {
+            position: -webkit-sticky;
+            position: static;
+            background-color: #333;
+            border-bottom: solid 5px #4faddb;
+            height: 64px;
+            padding: 10px;
+        }
+
+        .logo {
+            float: left
+        }
+
+        .logo img {
+            height: 40px;
+            padding: 10px 15px;
+        }
+
+
+        .autenticacao {
+            position: absolute;
+            right: 20px;
+            top: 22px;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+        }
+
+        .menu {
+            position: relative;
+            float: left;
+            right: 40px;
+            top: -10px;
+        }
+
+        li {
+            list-style-type: none;
+            display: inline;
+            margin: 5px;
+        }
+
+        li a:hover,
+        li a.selected {
+            background-color: #4faddb;
+            color: black;
+        }
+
+        .botao {
+            padding: 10px 30px;
+            border-radius: 25px;
+        }
+
+        .destaque {
+            background-color: red;
+        }
+
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            background-color: #444;
+            color: white;
+            padding: 10px 16px;
+            border: solid 1px #666;
+            border-radius: 5px;
+            right: 24px;
+            top: 24px;
+        }
+
+        @media (max-width: 1000px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .menu,
+            .autenticacao {
+                display: none;
+            }
+        }
+
     </style>
 </head>
 
@@ -24,13 +112,13 @@
         <nav class="menu">
             <ul>
                 <li>
-                    <a href="#inicio">Início</a>
+                    <a href="#inicio" >Início</a>
                 </li>
                 <li>
                     <a href="#cursos">Cursos</a>
                 </li>
                 <li>
-                    <a href="#sobre">Sobre</a>
+                    <a href="#sobre" >Sobre</a>
                 </li>
                 <li>
                     <a href="#contato">Contato</a>
@@ -44,7 +132,16 @@
     </header>
 
     <script>
-        // ...
+        window.onhashchange = function (e){
+            const oldURL = e.oldURL.split('#')[1]
+            const newURL = e.newURL.split('#')[1]
+
+            const oldLink = document.querySelector(`.menu a[href='#${oldURL}']`)
+            const newLink = document.querySelector(`.menu a[href='#${newURL}']`)
+            
+            oldLink && oldLink.classList.remove('selected')
+            newLink && newLink.classList.add('selected')
+        }
     </script>
 </body>
 
